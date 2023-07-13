@@ -1,41 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.css'
 
 
 function PokemonDetails() {
-  const [pokeNum,setpokeNum] = useState()
-  const [conteudo,setConteudo] = useState()
-  
-  // function bola(){
-    //   const entrada = document.getElementById('num')
-    //   // console.log(entrada.value)
-    //   return setpokeNum(entrada.value)
-    // }
-    
-    async function resposta(){
-      
-      try{
+
+  const [img,setImg] = useState()
+  const [input,setInput] = useState('')
+  const [pokeName,setPokeName] = useState('')
+
+  useEffect(() =>{
+    if (input){
+      resposta()
+    }else{
+      setInput('')
+      setPokeName('')
+      setImg(undefined)
+    }
+  },[input])
+
+  async function resposta(){
+    try{
       const entrada = document.getElementById('num').value
+      setInput(entrada)
       // setpokeNum(entrada.value)
       // console.log(typeof(entrada.value))
-      const response = await axios.get('https://pokeapi.co/api/v2/pokemon/'+entrada)
+      const response = await axios.get('https://pokeapi.co/api/v2/pokemon/'+input)
       // console.log(response.data.name)
       // console.log(response.data.sprites.front_default)
-      setConteudo(response.data.sprites.front_default)
+      if(0< entrada && entrada <= 1010){
+        setPokeName(response.data.name)
+        setImg(response.data.sprites.front_default)
+      }
     }catch (error){
       console.log(error)
     }
-
   }
 
   return (
     <>
     <body>
-      <input type="" id='num' placeholder='tpye a number' onChange={resposta}/>
-      <img src={conteudo} alt="" />
+
+      <main>
+
+      <div>
+        <input type="" id='num' placeholder='tpye a number' onChange={resposta}/>
+      </div>
+      <h2>{pokeName}</h2>
+      <div className='img'>
+      <img src={img} alt="" />
+      </div>
+
+      </main>
+
+
     </body>
     </>
   )
