@@ -1,6 +1,6 @@
 body{
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -19,6 +19,33 @@ main{
   border-radius: 3%;
   width: 400px;
   height: 400px;
+}
+
+.pokeInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tipo{
+  color: black;
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo{
+  color: white;
+  margin: 0;
+}
+
+#num{
+margin-bottom: 30px;
+width: 150px;
+/* text-align: center; */
 }
 
 .img{
