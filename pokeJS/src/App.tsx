@@ -5,10 +5,12 @@ import './App.css'
 
 function PokemonDetails() {
 
-  const [img,setImg] = useState()
-  const [input,setInput] = useState('')
-  const [pokeName,setPokeName] = useState('')
-  const [tipo,setTipo] = useState('')
+  const [estado,setEstado] = useState<string>('none')
+  const [estadoBody,setBody] = useState<string>('')
+  const [img,setImg] = useState<any>()
+  const [input,setInput] = useState<string>('')
+  const [pokeName,setPokeName] = useState<string>('')
+  const [tipo,setTipo] = useState<string>('')
 
   useEffect(() =>{
     if (input){
@@ -17,24 +19,29 @@ function PokemonDetails() {
       setInput('')
       setPokeName('')
       setTipo('')
-      setImg(undefined)
+      setImg('')
     }
   },[input])
+
 
   async function resposta(){
     try{
       const entrada = document.getElementById('num').value
-      setInput(entrada)
-      // setpokeNum(entrada.value)
-      // console.log(typeof(entrada.value))
-      const response = await axios.get('https://pokeapi.co/api/v2/pokemon/'+input)
-      console.log(response.data.name)
-      // console.log(response.data.sprites.front_default)
+
       if(0< entrada && entrada <= 1010){
+        
+        setInput(entrada)
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon/'+input)
+
         setPokeName(response.data.name)
         setImg(response.data.sprites.front_default)
         setTipo(response.data.types[0].type.name)
+        setEstado('none')
         // console.log(response.data.types)
+      }else if(entrada == null){
+        setEstado('none')
+      }else{
+        setEstado('')
       }
     }catch (error){
       console.log(error)
@@ -51,6 +58,7 @@ function PokemonDetails() {
       </div>
 
       <main>
+        <div style={{display:estado}} className='msgError'>Número do pokemon é maior que o limite de 1010</div>
         <div className='pokeInfo'>
           <h2>{pokeName}</h2>
           <p className='tipo'>{tipo}</p>

@@ -51,3 +51,7 @@ width: 150px;
 .img{
   /* padding: 2rem; */
 }
+
+.msgError{
+  color: black;
+}
