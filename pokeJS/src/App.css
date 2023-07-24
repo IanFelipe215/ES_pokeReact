@@ -35,6 +35,7 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .titulo{
@@ -48,9 +49,6 @@ width: 150px;
 /* text-align: center; */
 }
 
-.img{
-  /* padding: 2rem; */
-}
 
 .msgError{
   color: black;

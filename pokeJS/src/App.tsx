@@ -6,7 +6,9 @@ import './App.css'
 function PokemonDetails() {
 
   const [estado,setEstado] = useState<string>('none')
-  const [estadoBody,setBody] = useState<string>('')
+  // const [estadoBody,setBody] = useState<string>('')
+  const [loading,setLoading] = useState<string>('none')
+  
   const [img,setImg] = useState<any>()
   const [input,setInput] = useState<string>('')
   const [pokeName,setPokeName] = useState<string>('')
@@ -23,6 +25,14 @@ function PokemonDetails() {
     }
   },[input])
 
+  function atualizar(){
+
+  }
+
+  function limpaDados(){
+
+  }
+
 
   async function resposta(){
     try{
@@ -31,8 +41,10 @@ function PokemonDetails() {
       if(0< entrada && entrada <= 1010){
         
         setInput(entrada)
+        setLoading('')
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon/'+input)
 
+        setLoading('none')
         setPokeName(response.data.name)
         setImg(response.data.sprites.front_default)
         setTipo(response.data.types[0].type.name)
@@ -51,14 +63,15 @@ function PokemonDetails() {
   return (
     <>
     <body>
-
       <div className='header'>
         <h2 className='titulo'>Pesquisa Pokemon :)</h2>
         <input type="" id='num' placeholder='tpye a number' autoComplete='off' onChange={resposta}/>
+        <button onClick={atualizar}>Atualizar</button>
       </div>
 
       <main>
         <div style={{display:estado}} className='msgError'>Número do pokemon é maior que o limite de 1010</div>
+        <p style={{display:loading}}>Carregando</p>
         <div className='pokeInfo'>
           <h2>{pokeName}</h2>
           <p className='tipo'>{tipo}</p>
