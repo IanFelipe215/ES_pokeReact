@@ -26,11 +26,7 @@ function PokemonDetails() {
   },[input])
 
   function atualizar(){
-
-  }
-
-  function limpaDados(){
-
+    resposta()
   }
 
 
@@ -63,24 +59,24 @@ function PokemonDetails() {
   return (
     <>
     <body>
-      <div className='header'>
-        <h2 className='titulo'>Pesquisa Pokemon :)</h2>
-        <input type="" id='num' placeholder='tpye a number' autoComplete='off' onChange={resposta}/>
-        <button onClick={atualizar}>Atualizar</button>
-      </div>
-
-      <main>
-        <div style={{display:estado}} className='msgError'>Número do pokemon é maior que o limite de 1010</div>
-        <p style={{display:loading}}>Carregando</p>
-        <div className='pokeInfo'>
-          <h2>{pokeName}</h2>
-          <p className='tipo'>{tipo}</p>
+        <div className='header'>
+          <h2 className='titulo'>Pesquisa Pokemon :)</h2>
+          <input type="" id='num' placeholder='tpye a number' autoComplete='off' onChange={resposta}/>
+          <button onClick={atualizar}>Atualizar</button>
         </div>
-      <div className='img'>
-      <img src={img} alt="" />
-      </div>
 
-      </main>
+        <main>
+          <div style={{display:estado}} className='msgError'>Número do pokemon é maior que o limite de 1010</div>
+          <p style={{display:loading}}>Carregando</p>
+          <div className='pokeInfo'>
+            <h2>{pokeName}</h2>
+            <p className='tipo'>{tipo}</p>
+          </div>
+        <div className='img'>
+        <img src={img} alt="" />
+        </div>
+
+        </main>
 
 
     </body>

@@ -1,6 +1,6 @@
 body{
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
 }
 
@@ -52,4 +52,13 @@ width: 150px;
 
 .msgError{
   color: black;
+}
+
+.pokeList{
+  width: 30vw;
+  height: 90vh;
+  margin-left: 20px;
+  border-radius: 3%;
+
+  background-color: aliceblue;
 }
