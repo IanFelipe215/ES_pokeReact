@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import './App.css'
+import './pokeDetails.css'
 
 
 function PokemonDetails() {
@@ -65,7 +65,7 @@ function PokemonDetails() {
           <button onClick={atualizar}>Atualizar</button>
         </div>
 
-        <main>
+        <main id='main_details'>
           <div style={{display:estado}} className='msgError'>Número do pokemon é maior que o limite de 1010</div>
           <p style={{display:loading}}>Carregando</p>
           <div className='pokeInfo'>
