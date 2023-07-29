@@ -6,7 +6,6 @@ import './pokeDetails.css'
 function PokemonDetails() {
 
   const [estado,setEstado] = useState<string>('none')
-  // const [estadoBody,setBody] = useState<string>('')
   const [loading,setLoading] = useState<string>('none')
   
   const [img,setImg] = useState<any>()
@@ -29,26 +28,29 @@ function PokemonDetails() {
     resposta()
   }
 
-
+  // Função que faz a requisição para a API
   async function resposta(){
     try{
       const entrada = document.getElementById('num').value
 
+      // Condição que checa se o valor do input está dentro do range válido para a API
       if(0< entrada && entrada <= 1010){
         
         setInput(entrada)
         setLoading('')
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon/'+input)
-
+        
         setLoading('none')
         setPokeName(response.data.name)
         setImg(response.data.sprites.front_default)
         setTipo(response.data.types[0].type.name)
         setEstado('none')
-        // console.log(response.data.types)
-      }else if(entrada == null){
+
+      // condições para quando a entrada tiver o valor vazio ou quando maior que 1010
+      }else if(entrada == ''){
         setEstado('none')
-      }else{
+      }
+      else{
         setEstado('')
       }
     }catch (error){

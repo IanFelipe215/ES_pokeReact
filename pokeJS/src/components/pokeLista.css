@@ -1,7 +1,10 @@
 #main_list{
+    position: absolute;
+    right: 0;
+    overflow: auto;
     margin: 0;
-    width: 30vw;
-    height: 98vh;
+    width: 330px;
+    height: 650px;
     border-radius: 3%;
 
     background-color: #fff;
